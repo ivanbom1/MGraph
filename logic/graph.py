@@ -16,7 +16,7 @@ class MetroGraph:
             row.append(0)
         self.adjacent_matrix.append([0] * size)
 
-    def connect_stations(self, idx1, idx2, weight=1):
+    def connect_stations(self, idx1, idx2, weight):
         if idx1 >= len(self.nodes) or idx2 >= len(self.nodes):
             raise IndexError("Station index is out of range")
 
