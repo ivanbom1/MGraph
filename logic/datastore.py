@@ -14,3 +14,6 @@ def load_route(name):
     path = os.path.join(SAVE_DIR, f"{name}.json")
     with open(path, "r") as f:
         return json.load(f)
+    
+def get_save_folder():
+    return SAVE_DIR
