@@ -16,6 +16,18 @@ class MetroGraph:
             row.append(0)
         self.adjacent_matrix.append([0] * size)
 
+    def remove_station(self, name):
+        if name not in self.nodes:
+            raise ValueError(f"Station '{name}' does not exist.")
+
+        index = self.nodes.index(name)
+
+        self.nodes.pop(index)
+
+        self.adjacent_matrix.pop(index)
+        for row in self.adjacent_matrix:
+            row.pop(index)
+
     def connect_stations(self, idx1, idx2, weight):
         if idx1 >= len(self.nodes) or idx2 >= len(self.nodes):
             raise IndexError("Station index out of range")

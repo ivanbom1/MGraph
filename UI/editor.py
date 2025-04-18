@@ -107,6 +107,33 @@ def start_editor(root, graph, file_path):
         graph.connect_stations(i1, i2, weight)
         redraw()
 
+
+    def delete_station():
+        messagebox.showinfo("Delete Station", "Click on a station to delete it.")
+
+        def handle_click(event):
+            for name, info in stations_ui.items():
+                x, y = info["coords"]
+                dx, dy = event.x - x, event.y - y
+                if dx**2 + dy**2 <= station_radius**2:
+                    confirm = messagebox.askyesno("Confirm Delete", f"Delete station '{name}'?")
+                    if confirm:
+                        try:
+                            graph.remove_station(name)
+                        except ValueError as e:
+                            messagebox.showerror("Error", str(e))
+                            return
+                        del stations_ui[name]
+                        canvas.unbind("<Button-1>")
+                        redraw()
+                    return
+
+            messagebox.showerror("Not Found", "No station found at clicked location.")
+            canvas.unbind("<Button-1>")
+
+        canvas.bind("<Button-1>", handle_click)
+    
+
     def save_graph():
         if file_path:
             data = {
@@ -116,11 +143,12 @@ def start_editor(root, graph, file_path):
             }
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-                
+
             messagebox.showinfo("Saved", "Map saved successfully!")
 
     tk.Button(button_frame, text="Add Station", command=add_station).pack(side="left", padx=10)
     tk.Button(button_frame, text="Add Connection", command=connect_stations).pack(side="left", padx=10)
+    tk.Button(button_frame, text="Delete Station", command=delete_station).pack(side="left", padx=10)
     tk.Button(button_frame, text="Save Map", command=save_graph).pack(side="left", padx=10)
 
     redraw()

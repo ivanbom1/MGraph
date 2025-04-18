@@ -1,33 +1,23 @@
 {
     "nodes": [
         "Livoberezhna",
-        "Darnystia",
         "Hidropark",
-        "Dnipro"
+        "Darnytsia"
     ],
     "matrix": [
         [
             0,
-            1,
             2,
+            1
+        ],
+        [
+            2,
+            0,
             0
         ],
         [
             1,
             0,
-            0,
-            0
-        ],
-        [
-            2,
-            0,
-            0,
-            2
-        ],
-        [
-            0,
-            0,
-            2,
             0
         ]
     ],
@@ -40,14 +30,6 @@
             "color": "#ff0000",
             "line": "M1"
         },
-        "Darnystia": {
-            "coords": [
-                735,
-                300
-            ],
-            "color": "#ff0000",
-            "line": "M1"
-        },
         "Hidropark": {
             "coords": [
                 569,
@@ -56,10 +38,10 @@
             "color": "#ff0000",
             "line": "M1"
         },
-        "Dnipro": {
+        "Darnytsia": {
             "coords": [
-                494,
-                340
+                748,
+                348
             ],
             "color": "#ff0000",
             "line": "M1"
