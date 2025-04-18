@@ -2,21 +2,31 @@
     "nodes": [
         "Livoberezhna",
         "Hidropark",
-        "Darnytsia"
+        "Darnytsia",
+        "Dnipro"
     ],
     "matrix": [
         [
             0,
             2,
-            1
+            1,
+            0
         ],
         [
             2,
             0,
-            0
+            0,
+            2
         ],
         [
             1,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            2,
             0,
             0
         ]
@@ -42,6 +52,14 @@
             "coords": [
                 748,
                 348
+            ],
+            "color": "#ff0000",
+            "line": "M1"
+        },
+        "Dnipro": {
+            "coords": [
+                497,
+                350
             ],
             "color": "#ff0000",
             "line": "M1"

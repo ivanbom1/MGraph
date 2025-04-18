@@ -1,0 +1,34 @@
+{
+    "nodes": [
+        "Porte d'Italie",
+        "Masion Blanch"
+    ],
+    "matrix": [
+        [
+            0,
+            2
+        ],
+        [
+            2,
+            0
+        ]
+    ],
+    "stations_ui": {
+        "Porte d'Italie": {
+            "coords": [
+                507,
+                210
+            ],
+            "color": "#ff80c0",
+            "line": "M7"
+        },
+        "Masion Blanch": {
+            "coords": [
+                634,
+                207
+            ],
+            "color": "#ff80c0",
+            "line": "M7"
+        }
+    }
+}

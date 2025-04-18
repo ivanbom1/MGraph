@@ -28,6 +28,7 @@ class MetroApp:
 
     def create_new_file(self):
         file_name = simpledialog.askstring("New File", "Enter name for a new metro map:")
+        file_name = os.path.splitext(file_name)[0] + '.json'
         if not file_name:
             return
 

@@ -1,0 +1,68 @@
+{
+    "nodes": [
+        "aboba1",
+        "aboba2",
+        "aboba3",
+        "aboba4"
+    ],
+    "matrix": [
+        [
+            0,
+            3,
+            4,
+            0
+        ],
+        [
+            3,
+            0,
+            0,
+            0
+        ],
+        [
+            4,
+            0,
+            0,
+            6
+        ],
+        [
+            0,
+            0,
+            6,
+            0
+        ]
+    ],
+    "stations_ui": {
+        "aboba1": {
+            "coords": [
+                536,
+                307
+            ],
+            "color": "#8080c0",
+            "line": "AB"
+        },
+        "aboba2": {
+            "coords": [
+                645,
+                312
+            ],
+            "color": "#8080c0",
+            "line": "AB"
+        },
+        "aboba3": {
+            "coords": [
+                582,
+                368
+            ],
+            "color": "#8080c0",
+            "line": "AB"
+        },
+        "aboba4": {
+            "coords": [
+                600,
+                246
+            ],
+            "color": "#8080c0",
+            "line": "AB"
+        }
+    }
+}
