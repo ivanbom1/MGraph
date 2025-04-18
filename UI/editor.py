@@ -3,9 +3,12 @@ from tkinter import simpledialog, messagebox, colorchooser
 from logic.datastore import save_route
 import json
 import os
+from logic.graph import MetroGraph
+
 
 station_radius = 10
 stations_ui = {}
+
 
 def start_editor(root, graph, file_path):
     global stations_ui
@@ -146,9 +149,40 @@ def start_editor(root, graph, file_path):
 
             messagebox.showinfo("Saved", "Map saved successfully!")
 
+    def find_path():
+
+        if len(graph.nodes) < 2:
+            return messagebox.showerror("Error", "At least 2 stations required.")
+
+        f1 = simpledialog.askstring("Connect From", "Enter first station name:")
+        f2 = simpledialog.askstring("Connect To", "Enter second station name:")
+        
+        if f1 not in graph.nodes or f2 not in graph.nodes:
+            return messagebox.showerror("Error", "One or both stations not found.")
+        
+        curr_path, total_cost = graph.find_shortest_path(f1, f2)
+
+        def show_path(curr_path):
+            global total_path
+            total_path = ""
+
+            for station_idx in range(0, len(curr_path)):
+                total_path += curr_path[station_idx]
+                
+                if station_idx != (len(curr_path) - 1):
+                    total_path += " --> "
+            
+            return total_path
+        
+        found_path = show_path(curr_path)
+        
+        messagebox.showinfo("Find Shortest Path", f"The shortest path is {found_path}. Total cost is {total_cost}.")
+        
+
     tk.Button(button_frame, text="Add Station", command=add_station).pack(side="left", padx=10)
     tk.Button(button_frame, text="Add Connection", command=connect_stations).pack(side="left", padx=10)
     tk.Button(button_frame, text="Delete Station", command=delete_station).pack(side="left", padx=10)
     tk.Button(button_frame, text="Save Map", command=save_graph).pack(side="left", padx=10)
+    tk.Button(button_frame, text="Find Shortest Path", command=find_path).pack(side="left", padx=10)
 
     redraw()

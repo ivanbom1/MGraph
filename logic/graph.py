@@ -1,3 +1,5 @@
+import heapq
+
 class MetroGraph:
     def __init__(self):
         self.adjacent_matrix = []
@@ -40,7 +42,68 @@ class MetroGraph:
         raise ValueError(f"Station '{name}' not found")
 
     def find_shortest_path(self, start_name, end_name):
-        pass
+        
+        start = self.get_station_idx(start_name)
+ 
+        end = self.get_station_idx(end_name)
+ 
+        n = len(self.nodes)
+ 
+
+ 
+        distances = [float("inf")] * n
+ 
+        prev = [None] * n
+ 
+        distances[start] = 0
+ 
+        queue = [(0, start)]
+ 
+
+ 
+        while queue:
+ 
+            current_distance, current_node = heapq.heappop(queue)
+ 
+
+ 
+            if current_node == end:
+ 
+                break
+ 
+
+ 
+            for neighbor, weight in enumerate(self.adjacent_matrix[current_node]):
+ 
+                if weight > 0:
+ 
+                    distance = current_distance + weight
+ 
+                    if distance < distances[neighbor]:
+ 
+                        distances[neighbor] = distance
+ 
+                        prev[neighbor] = current_node
+ 
+                        heapq.heappush(queue, (distance, neighbor))
+ 
+
+ 
+        path = []
+ 
+        pos = end
+ 
+        while pos is not None:
+ 
+            path.append(self.nodes[pos])
+ 
+            pos = prev[pos]
+ 
+        path.reverse()
+ 
+
+ 
+        return path, distances[end] if distances[end] != float("inf") else ([], None)
 
     def export_graph_data(self):
         return {
